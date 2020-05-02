@@ -2,36 +2,38 @@ package hu.unimiskolc.minbizt.Problem;
 
 import static org.junit.Assert.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import org.junit.Test;
 
 public class ProblemTest {
-
+	
 	@Test
-	public void testGetDistance() {
+	public void testGetDistance() {	
 		Problem problem = new Problem();
 		
 		problem.setDistance(4);
-		assertEquals(problem.getDistance(), 4);
+		assertEquals(4, problem.getDistance());
 		
 		problem.setDistance(0);
-		assertEquals(problem.getDistance(), 0);
+		assertEquals(0, problem.getDistance());
 		
 		problem.setDistance(-32567);
-		assertEquals(problem.getDistance(), -32567);
+		assertEquals(-32567, problem.getDistance());
 	}
 
 	@Test
-	public void testSetDistance() {
+	public void testSetDistance() {	
 		Problem problem = new Problem();
 		
 		problem.setDistance(4);
-		assertEquals(problem.getDistance(), 4);
+		assertEquals(4, problem.getDistance());
 		
 		problem.setDistance(0);
-		assertEquals(problem.getDistance(), 0);
+		assertEquals(0, problem.getDistance());
 		
 		problem.setDistance(-32567);
-		assertEquals(problem.getDistance(), -32567);
+		assertEquals(-32567, problem.getDistance());
 	}
 
 	@Test
@@ -39,13 +41,13 @@ public class ProblemTest {
 		Problem problem = new Problem();
 		
 		problem.setFuelCapacity(127);
-		assertEquals(problem.getFuelCapacity(), 127);
+		assertEquals(127, problem.getFuelCapacity());
 		
 		problem.setFuelCapacity(0);
-		assertEquals(problem.getFuelCapacity(), 0);
+		assertEquals(0, problem.getFuelCapacity());
 		
 		problem.setFuelCapacity(-127);
-		assertEquals(problem.getFuelCapacity(), -127);
+		assertEquals(-127, problem.getFuelCapacity());
 	}
 
 	@Test
@@ -53,13 +55,13 @@ public class ProblemTest {
 		Problem problem = new Problem();
 		
 		problem.setFuelCapacity(127);
-		assertEquals(problem.getFuelCapacity(), 127);
+		assertEquals(127, problem.getFuelCapacity());
 		
 		problem.setFuelCapacity(0);
-		assertEquals(problem.getFuelCapacity(), 0);
+		assertEquals(0, problem.getFuelCapacity());
 		
 		problem.setFuelCapacity(-127);
-		assertEquals(problem.getFuelCapacity(), -127);
+		assertEquals(-127, problem.getFuelCapacity());
 	}
 
 	@Test
@@ -67,13 +69,13 @@ public class ProblemTest {
 		Problem problem = new Problem();
 		
 		problem.setNumberOfStation(1247);
-		assertEquals(problem.getNumberOfStation(), 1247);
+		assertEquals(1247, problem.getNumberOfStation());
 		
 		problem.setNumberOfStation(0);
-		assertEquals(problem.getNumberOfStation(), 0);
+		assertEquals(0, problem.getNumberOfStation());
 		
 		problem.setNumberOfStation(-1);
-		assertEquals(problem.getNumberOfStation(), -1);
+		assertEquals(-1, problem.getNumberOfStation());
 	}
 
 	@Test
@@ -81,13 +83,13 @@ public class ProblemTest {
 		Problem problem = new Problem();
 		
 		problem.setNumberOfStation(1247);
-		assertEquals(problem.getNumberOfStation(), 1247);
+		assertEquals(1247, problem.getNumberOfStation());
 		
 		problem.setNumberOfStation(0);
-		assertEquals(problem.getNumberOfStation(), 0);
+		assertEquals(0, problem.getNumberOfStation());
 		
 		problem.setNumberOfStation(-1);
-		assertEquals(problem.getNumberOfStation(), -1);
+		assertEquals(-1, problem.getNumberOfStation());
 	}
 
 	@Test
@@ -96,15 +98,15 @@ public class ProblemTest {
 		
 		long[][] arr = { { 1, 2 }, { 3, 4 } };
 		problem.setGasStations(arr);
-		assertArrayEquals(problem.getGasStations(), arr);
+		assertArrayEquals(arr, problem.getGasStations());
 		
 		long[][] arr2 = { { 1, 2 } };
 		problem.setGasStations(arr2);
-		assertArrayEquals(problem.getGasStations(), arr2);
+		assertArrayEquals(arr2, problem.getGasStations());
 		
-		long[][] arr3 = { { 1, 2 }, { 3, 4 } , { 999, 484515 } };
+		long[][] arr3 = { { 1, 2 }, { 3, 4 }, { 999, 484515 } };
 		problem.setGasStations(arr3);
-		assertArrayEquals(problem.getGasStations(), arr3);
+		assertArrayEquals(arr3, problem.getGasStations());
 	}
 
 	@Test
@@ -113,76 +115,79 @@ public class ProblemTest {
 		
 		long[][] arr = { { 1, 2 }, { 3, 4 } };
 		problem.setGasStations(arr);
-		assertArrayEquals(problem.getGasStations(), arr);
+		assertArrayEquals(arr, problem.getGasStations());
 		
 		long[][] arr2 = { { 1, 2 } };
 		problem.setGasStations(arr2);
-		assertArrayEquals(problem.getGasStations(), arr2);
+		assertArrayEquals(arr2, problem.getGasStations());
 		
 		long[][] arr3 = { { 1, 2 }, { 3, 4 } , { 999, 484515 } };
 		problem.setGasStations(arr3);
-		assertArrayEquals(problem.getGasStations(), arr3);
+		assertArrayEquals(arr3, problem.getGasStations());
 	}
 
 	@Test
 	public void testProblem() {
+		Problem problem = new Problem();
+		
 		long[][] arr = { { 1, 2 }, { 3, 4 } };
-		Problem problem = new Problem(1, 2, 3, arr);
-		assertEquals(problem.getDistance(), 1);
-		assertEquals(problem.getFuelCapacity(), 2);
-		assertEquals(problem.getNumberOfStation(), 3);
-		assertArrayEquals(problem.getGasStations(), arr);
-	}
-	
-	@Test
-	public void testEnoughTheFuel() {
-		long[][] arr = { { 0, 999 }, { 20, 100 }, { 30, 10 }, { 50, 60 }, { 70, 70 }   };
-		Problem problem = new Problem(100, 50, 5, arr);
-		assertTrue(problem.enoughTheFuel(0, 1));
-		assertTrue(problem.enoughTheFuel(0, 2));
-		assertTrue(problem.enoughTheFuel(0, 3));
-		assertFalse(problem.enoughTheFuel(0, 4));
-		assertTrue(problem.enoughTheFuel(3, 4));
+		problem = new Problem(1, 2, 3, arr);
+		
+		assertEquals(1, problem.getDistance());
+		assertEquals(2, problem.getFuelCapacity());
+		assertEquals(3, problem.getNumberOfStation());
+		assertArrayEquals(arr, problem.getGasStations());
 	}
 	
 	@Test
 	public void testReachedDestination() {
-		long[][] arr = { { 0, 999 }, { 20, 100 }, { 30, 10 }, { 50, 60 }, { 70, 70 }   };
-		Problem problem = new Problem(100, 50, 5, arr);
-		assertTrue(problem.reachedDestination(4));
-		assertTrue(problem.reachedDestination(3));
-		assertFalse(problem.reachedDestination(2));
-		assertFalse(problem.reachedDestination(1));
-		assertFalse(problem.reachedDestination(0));		
+		Problem problem = new Problem();
+		
+		long[][] arr = { { 20, 100 }, { 30, 10 }, { 50, 60 }, { 70, 70 } };
+		problem = new Problem(100, 50, 4, arr);
+		
+		assertFalse(problem.reachedDestination(0, 20));
+		assertFalse(problem.reachedDestination(3, 10));
+		assertTrue(problem.reachedDestination(3, 50));
+		assertTrue(problem.reachedDestination(3, 30));
 	}
 	
-	@Test
-	public void testCostCalculation() {
-		long[][] arr = { { 0, 999 }, { 20, 100 }, { 30, 10 }, { 50, 60 }, { 70, 70 }   };
-		Problem problem = new Problem(100, 50, 5, arr);
-		assertEquals(problem.costCalculation(0, 1), 2000);
-		assertEquals(problem.costCalculation(0, 2), 300);
-		assertEquals(problem.costCalculation(1, 2), 100);
-	}
 	
 	@Test
-	public void testSearchBestGasStationd() {
-		long[][] arr = { { 0, 999 }, { 20, 100 }, { 30, 10 }, { 50, 60 }, { 70, 70 }   };
-		Problem problem = new Problem(100, 50, 5, arr);
-		assertEquals(problem.searchBestGasStationd(0), 2);
-		assertEquals(problem.searchBestGasStationd(1), 2);
+	public void findNextCheaperGasStations() {
+		Problem problem = new Problem();
+		
+		long[][] arr = { { 20, 100 }, { 30, 10 }, { 50, 60 }, { 70, 70 } };
+		int [] cheaperStations = { 1, -1, -1, -1 };
+		problem = new Problem(100, 50, 4, arr);
+		
+		problem.findNextCheaperGasStations();
+		assertArrayEquals(cheaperStations, problem.getNextCheaperGasStation());
 	}
 
+	
 	@Test
 	public void testSolveProblem() {
-		long[][] arr = { { 0, 999 }, { 20, 100 }, { 30, 10 }, { 50, 60 }, { 70, 70 }   };
-		Problem problem = new Problem(100, 50, 5, arr);
-		assertEquals(problem.solveProblem(), 1500);
+		Problem problem = new Problem();
 		
-		long[][] arr2 = { { 0, 999999999 }, { 1157, 41 }, { 497, 95 }, { 124, 14 }, { 2020, 46 }, { 1608, 65 },
-				{ 1346, 100 }, { 2764, 47 }, { 2247, 56 }, { 481, 63 }};
-		problem = new Problem(2801, 672, 10, arr2);
-		assertEquals(problem.solveProblem(), 113786);
+		long[][] arr = { { 20, 100 }, { 30, 10 }, { 50, 60 }, { 70, 70 } };
+		problem = new Problem(100, 50, 4, arr);
+		
+		assertEquals(1500, problem.solveProblem());
 	}
+	
+	@Test
+	public void testReadFromConsole() throws NumberFormatException, IOException {
+		Problem problem = new Problem();		
+		long[][] arr = { { 20, 100 }, { 30, 10 }, { 50, 60 }, { 70, 70 } };
+		
+		String sysIn = "100\n50\n4\n20 100\n30 10\n50 60\n70 70"; 
+		System.setIn(new ByteArrayInputStream(sysIn.getBytes()));
 
+		problem.readFromConsole();
+		assertEquals(100, problem.getDistance());
+		assertEquals(50, problem.getFuelCapacity());
+		assertEquals(4, problem.getNumberOfStation());
+		assertArrayEquals(arr, problem.getGasStations());
+	}
 }
